@@ -5,9 +5,10 @@ const Navbar = () => {
     {/*logo and site name*/}
       <div className='flex justify-between items-center'>
         {/*I will add the image here later */}
+        <img src='/picprismlogo.png' alt='logo' className='w-[50px]'/>
         <Link to="/" className='font-bold text-3xl'>PicPrism</Link>
       </div>
-      <ul className='flex gap-5 text-lg font-semibold text-gray-400 '>
+      <ul className='flex gap-5 text-lg font-semibold text-gray-400 ml-5 sm:ml-0'>
         <Link to="/" className='hover:text-black cursor-pointer sm:pLink '>About</Link>
         <Link to="/" className='hover:text-black cursor-pointer sm:pLink '>Contact</Link>
         <Link to="/login" className='hover:text-black cursor-pointer sm:pLink '>Log In</Link>
