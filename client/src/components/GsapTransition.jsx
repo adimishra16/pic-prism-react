@@ -7,6 +7,7 @@ import BuyerDashboard from "../pages/BuyerDashboard";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import { Toaster } from "react-hot-toast";
+import ProtectedRoute from "./ProtectedRoutes";
 
 const GsapTransition = () => {
   const nodeRef = useRef(null);
@@ -29,15 +30,29 @@ const GsapTransition = () => {
 
   return (
     <div ref={nodeRef}>
-      <Toaster />
-      <Routes location={location}>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/seller/profile" element={<SellerDashboard />} />
-        <Route path="/buyer/profile" element={<BuyerDashboard />} />
-      </Routes>
-    </div>
+    <Toaster />
+    <Routes location={location}>
+      <Route path="/" element={<Home />} />
+      <Route
+        path="/login"
+        element={<ProtectedRoute children={<Login />} requiresAuth={false} />}
+      />
+      <Route
+        path="/signup"
+        element={
+          <ProtectedRoute children={<Signup />} requiresAuth={false} />
+        }
+      />
+      <Route
+        path="/seller/profile"
+        element={<ProtectedRoute children={<SellerDashboard />} />}
+      />
+      <Route
+        path="/buyer/profile"
+        element={<ProtectedRoute children={<BuyerDashboard />} />}
+      />
+    </Routes>
+  </div>
   );
 };
 
